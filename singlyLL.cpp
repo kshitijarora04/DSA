@@ -56,6 +56,14 @@ public:
     // insert at the end of the linked list
     void insert_at_end(int val)
     {
+        node *temp2 = head;
+        node *temp = new node();
+        temp->data = val;
+        while (temp2->next != NULL)
+        {
+            temp2 = temp2->next;
+        }
+        temp2->next = temp;
     }
 
     // insert in the middle
@@ -71,6 +79,7 @@ int main()
     ll.insert_at_beg(20);
     ll.insert_at_beg(30);
     ll.insert_at_beg(40);
+    ll.insert_at_end(50);
     ll.print();
     return 0;
 }
