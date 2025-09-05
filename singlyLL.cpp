@@ -134,7 +134,8 @@ public:
             t->next = NULL;
         }
     }
-    void delete_at_pos(int pos)
+
+        void delete_at_pos(int pos)
     {
         if (head == NULL)
         {
