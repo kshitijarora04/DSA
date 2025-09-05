@@ -54,6 +54,44 @@ void levelOrder(node *root)
     }
 }
 
+int countLevels(node* root)
+{
+     if (root == nullptr)
+    {
+        return 0;
+    }
+    queue<node *> q;
+    q.push(root);
+    q.push(nullptr); // marker for level change
+    int levels=0;
+
+    while (!q.empty())
+    {
+        node *temp = q.front();
+        q.pop();
+        if (temp == nullptr)
+        {
+            levels++;
+            if (!q.empty())
+            {
+                q.push(nullptr);
+            }
+        }
+        else
+        {
+            if (temp->left != NULL)
+            {
+                q.push(temp->left);
+            }
+            if (temp->right != NULL)
+            {
+                q.push(temp->right);
+            }
+        }
+    }
+    return levels;
+}
+
 int main()
 {
     node *root = new node(1);
@@ -66,5 +104,8 @@ int main()
     root->right->right = new node(2);
     root->right->left->right = new node(14);
     levelOrder(root);
+    cout<<"\n";
+    int levels=countLevels(root);
+    cout<<levels<<endl;
     return 0;
 }
